@@ -1,4 +1,3 @@
-
 import os
 import re
 import json
@@ -53,8 +52,44 @@ st.markdown(
         border-right: 1px solid rgba(56,189,248,.18);
     }
 
+    [data-testid="stSidebar"] > div:first-child {
+        padding: 1.4rem 1rem 1.2rem 1rem;
+    }
+
     [data-testid="stSidebar"] * {
         color: #dff7ff;
+    }
+
+    .sidebar-brand {
+        padding: 4px 8px 18px 8px;
+        border-bottom: 1px solid rgba(56,189,248,.13);
+        margin-bottom: 18px;
+    }
+
+    .sidebar-brand h2 {
+        margin: 0;
+        font-size: 23px;
+        font-weight: 800;
+        color: #f8fdff;
+    }
+
+    .sidebar-brand h2 span {
+        color: #38bdf8;
+    }
+
+    .sidebar-brand p {
+        margin: 5px 0 0 0;
+        color: #7898aa;
+        font-size: 12px;
+    }
+
+    .sidebar-section {
+        color: #7fa8bc;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .09em;
+        text-transform: uppercase;
+        margin: 18px 8px 8px 8px;
     }
 
     .block-container {
@@ -465,45 +500,48 @@ st.markdown(
 # SIDEBAR
 # ============================================================
 with st.sidebar:
-    st.markdown("## ⚡ InternPulse")
-    st.caption("Feedback intelligence dashboard")
+    st.markdown(
+        """
+        <div class="sidebar-brand">
+            <h2>⚡ Intern<span>Pulse</span></h2>
+            <p>AI-powered internship feedback intelligence</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    st.markdown("### 🔐 Groq API")
+    st.markdown('<div class="sidebar-section">🔐 AI Connection</div>', unsafe_allow_html=True)
     saved_key = get_groq_key()
 
+    # If the key exists in Streamlit Secrets, use it silently.
     if saved_key:
         api_key = saved_key
-        st.success("Groq API key detected.")
     else:
         api_key = st.text_input(
-            "Enter Groq API key",
+            "Groq API key",
             type="password",
             placeholder="gsk_...",
             help="For Streamlit Cloud, add GROQ_API_KEY under App Settings → Secrets.",
+            label_visibility="collapsed",
         )
 
-    st.markdown("---")
-    st.markdown("### 🧠 AI Architecture")
+    st.markdown('<div class="sidebar-section">🧠 How It Works</div>', unsafe_allow_html=True)
     st.markdown(
         """
-        **1. TF-IDF**  
-        Converts feedback into numerical features.
+        **01 · TF-IDF**  
+        Converts feedback into useful text features.
 
-        **2. Logistic Regression**  
-        Classifies feedback as Positive, Neutral, or Negative.
+        **02 · Logistic Regression**  
+        Detects Positive, Neutral, or Negative sentiment.
 
-        **3. Groq GPT-OSS 20B**  
-        Explains themes and suggests practical improvements.
-
-        **4. Streamlit**  
-        Presents the results in an interactive dashboard.
+        **03 · Groq GPT-OSS 20B**  
+        Finds themes and practical improvement actions.
         """
     )
 
-    st.markdown("---")
+    st.markdown('<div class="sidebar-section">📁 Dataset</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="small-note">Tip: upload a CSV with a column named '
-        '<b>feedback</b> or <b>text</b>. A sentiment/label column is optional.</div>',
+        '<div class="small-note">Upload a CSV containing a <b>feedback</b>, <b>text</b>, <b>review</b>, or <b>comment</b> column.</div>',
         unsafe_allow_html=True,
     )
 
@@ -812,3 +850,4 @@ st.markdown(
     '<div class="footer">InternPulse AI • Logistic Regression + TF-IDF + Groq GPT-OSS 20B • Built with Streamlit</div>',
     unsafe_allow_html=True,
 )
+
