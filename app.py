@@ -1,3 +1,4 @@
+
 import os
 import re
 import json
@@ -257,62 +258,47 @@ st.markdown(
 # ============================================================
 # SAMPLE TRAINING DATA
 # ============================================================
-TRAINING_DATA = pd.DataFrame(
-    {
-        "text": [
-            "The mentor was supportive and always answered my questions.",
-            "I learned a lot and received useful feedback every week.",
-            "The internship tasks were interesting and relevant to my career.",
-            "The team welcomed me and gave me clear guidance.",
-            "I enjoyed working on real projects and improving my skills.",
-            "The supervisor gave constructive feedback and helped me grow.",
-            "Communication with the team was excellent.",
-            "The training sessions were practical and useful.",
-            "I was given meaningful responsibilities and learned quickly.",
-            "The work environment was friendly and motivating.",
-            "My mentor explained difficult concepts clearly.",
-            "The internship improved my technical and communication skills.",
-            "The tasks were well organized and easy to understand.",
-            "I received recognition for completing my work.",
-            "The company provided a great learning environment.",
-            "I felt ignored when I asked for help.",
-            "The tasks were repetitive and did not teach me anything.",
-            "My mentor rarely gave feedback.",
-            "The workload was unreasonable and stressful.",
-            "Communication from the team was poor.",
-            "I was not given clear instructions.",
-            "The internship did not provide enough practical experience.",
-            "The deadlines were unrealistic.",
-            "My work was never recognized.",
-            "The training material was confusing and outdated.",
-            "I had to solve problems without any guidance.",
-            "The environment was stressful and unwelcoming.",
-            "I did not receive useful feedback.",
-            "The assigned tasks were unrelated to my learning goals.",
-            "There was too much work and not enough support.",
-            "The experience was okay but could be improved.",
-            "The internship was average and not very exciting.",
-            "Some tasks were useful but others were repetitive.",
-            "Communication was sometimes good and sometimes confusing.",
-            "The mentor helped occasionally, but feedback was limited.",
-            "The workload was manageable, although some deadlines were tight.",
-            "I learned a few things but expected more practical work.",
-            "The experience was neither great nor terrible.",
-            "The internship experience was mixed and could be improved in several areas.",
-        ],
-        "label": [
-            "Positive", "Positive", "Positive", "Positive", "Positive",
-            "Positive", "Positive", "Positive", "Positive", "Positive",
-            "Positive", "Positive", "Positive", "Positive", "Positive",
-            "Negative", "Negative", "Negative", "Negative", "Negative",
-            "Negative", "Negative", "Negative", "Negative", "Negative",
-            "Negative", "Negative", "Negative", "Negative", "Negative",
-            "Neutral", "Neutral", "Neutral", "Neutral", "Neutral",
-            "Neutral", "Neutral",
-        ],
-    }
-)
-
+TRAINING_DATA = pd.DataFrame([
+    ("The mentor was supportive and always answered my questions.", "Positive"),
+    ("I learned a lot and received useful feedback every week.", "Positive"),
+    ("The internship tasks were interesting and relevant to my career.", "Positive"),
+    ("The team welcomed me and gave me clear guidance.", "Positive"),
+    ("I enjoyed working on real projects and improving my skills.", "Positive"),
+    ("The supervisor gave constructive feedback and helped me grow.", "Positive"),
+    ("Communication with the team was excellent.", "Positive"),
+    ("The training sessions were practical and useful.", "Positive"),
+    ("I was given meaningful responsibilities and learned quickly.", "Positive"),
+    ("The work environment was friendly and motivating.", "Positive"),
+    ("My mentor explained difficult concepts clearly.", "Positive"),
+    ("The internship improved my technical and communication skills.", "Positive"),
+    ("The tasks were well organized and easy to understand.", "Positive"),
+    ("I received recognition for completing my work.", "Positive"),
+    ("The company provided a great learning environment.", "Positive"),
+    ("I felt ignored when I asked for help.", "Negative"),
+    ("The tasks were repetitive and did not teach me anything.", "Negative"),
+    ("My mentor rarely gave feedback.", "Negative"),
+    ("The workload was unreasonable and stressful.", "Negative"),
+    ("Communication from the team was poor.", "Negative"),
+    ("I was not given clear instructions.", "Negative"),
+    ("The internship did not provide enough practical experience.", "Negative"),
+    ("The deadlines were unrealistic.", "Negative"),
+    ("My work was never recognized.", "Negative"),
+    ("The training material was confusing and outdated.", "Negative"),
+    ("I had to solve problems without any guidance.", "Negative"),
+    ("The environment was stressful and unwelcoming.", "Negative"),
+    ("I did not receive useful feedback.", "Negative"),
+    ("The assigned tasks were unrelated to my learning goals.", "Negative"),
+    ("There was too much work and not enough support.", "Negative"),
+    ("The experience was okay but could be improved.", "Neutral"),
+    ("The internship was average and not very exciting.", "Neutral"),
+    ("Some tasks were useful but others were repetitive.", "Neutral"),
+    ("Communication was sometimes good and sometimes confusing.", "Neutral"),
+    ("The mentor helped occasionally, but feedback was limited.", "Neutral"),
+    ("The workload was manageable, although some deadlines were tight.", "Neutral"),
+    ("I learned a few things but expected more practical work.", "Neutral"),
+    ("The experience was neither great nor terrible.", "Neutral"),
+    ("The internship experience was mixed and could be improved in several areas.", "Neutral"),
+], columns=["text", "label"])
 
 # ============================================================
 # HELPERS
@@ -826,4 +812,3 @@ st.markdown(
     '<div class="footer">InternPulse AI • Logistic Regression + TF-IDF + Groq GPT-OSS 20B • Built with Streamlit</div>',
     unsafe_allow_html=True,
 )
-
