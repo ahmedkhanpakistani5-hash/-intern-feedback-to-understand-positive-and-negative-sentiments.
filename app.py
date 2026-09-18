@@ -298,6 +298,7 @@ TRAINING_DATA = pd.DataFrame(
             "The workload was manageable, although some deadlines were tight.",
             "I learned a few things but expected more practical work.",
             "The experience was neither great nor terrible.",
+            "The internship experience was mixed and could be improved in several areas.",
         ],
         "label": [
             "Positive", "Positive", "Positive", "Positive", "Positive",
@@ -825,3 +826,4 @@ st.markdown(
     '<div class="footer">InternPulse AI • Logistic Regression + TF-IDF + Groq GPT-OSS 20B • Built with Streamlit</div>',
     unsafe_allow_html=True,
 )
+
